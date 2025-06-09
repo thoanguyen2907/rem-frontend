@@ -6,6 +6,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
   },
+  setupFiles: ['./jest.setup.js'],
   globals: {
     'ts-jest': {
       useESM: true

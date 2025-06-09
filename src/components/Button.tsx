@@ -21,7 +21,7 @@ export default function Button<T>({ text, disabled, onButtonClick, data }: Butto
         backgroundColor: disabled ? 'var(--disabled-bg)' : 'var(--accent-color)',
         color: 'var(--text-color)'
       }}
-      onClick={() => onButtonClick && data !== undefined && onButtonClick(data)}
+      onClick={() => !disabled && onButtonClick && data !== undefined && onButtonClick(data)}
       disabled={disabled}>
       {text}
     </button>
