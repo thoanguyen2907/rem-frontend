@@ -18,7 +18,6 @@ const createUncurried = <T>(stateCreator: ZustandExportedTypes.StateCreator<T>) 
 
 
 export const create = (<T>(stateCreator: ZustandExportedTypes.StateCreator<T>) => {
-  console.log('zustand create mock');
   return typeof stateCreator === 'function' ? createUncurried(stateCreator) : createUncurried;
 }) as typeof ZustandExportedTypes.create;
 
