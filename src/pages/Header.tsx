@@ -14,7 +14,6 @@ export default function Header() {
   }
   return (
     <div className="p-4" style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-color)' }}>
-      <h1>Welcome</h1>
       <select className="mt-2 p-2 border rounded bg-[#4497A1]" value={theme} onChange={changeTheme}>
         <option value="light">💡 Light</option>
         <option value="dark">🌒 Dark</option>
