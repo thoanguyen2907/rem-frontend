@@ -1,8 +1,9 @@
+import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware';
+
 import { delay } from '../utils/mockDelay';
 import { fetchproductByLocation } from '../api/apiClient'
 import { Product } from '../types/types'
-import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware';
 
 export interface ProductState {
   storeProducts: (data: Product[]) => void

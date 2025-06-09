@@ -1,6 +1,7 @@
 import React from 'react'
-import { ThemeProvider, useTheme } from '@/context/ThemeContext'
+
 import { renderHook } from '@testing-library/react'
+import { ThemeProvider, useTheme } from '@/context/ThemeContext'
 
 describe('test use theme', () => {
   it('should return theme context defined in ThemeProvider', () => {

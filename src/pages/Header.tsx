@@ -1,7 +1,6 @@
+import React from 'react'
 import { ThemeName } from '@/themes'
 import { useTheme } from '../context/ThemeContext'
-import React from 'react'
-
 /**
  * theme template for season - only admin can set theme to Christmas or New Year
  */
