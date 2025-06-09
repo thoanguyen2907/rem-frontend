@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
+
 import { useTheme } from '../context/ThemeContext'
 import { Product } from '../types/types'
-import Card from '../components/Card'
 import { useProductStore } from '../store/useProductStore'
-import ProductsSkeleton from '../components/ProductsSkeleton'
+
+import Card from '../components/Card'
 import Error from '../components/Error'
+import ProductsSkeleton from '../components/ProductsSkeleton'
 
 const postcode = 'NR32'
 const area = 'Lowestoft'
@@ -87,7 +89,7 @@ export default function Home() {
             key={product.id}
             data={product}
             allowedOnRoad={product.allowed_on_road}
-            buttonText="Select Product →"
+            buttonText="Select Product"
             onButtonClick={onButtonClick}
             renderHeader={renderHeader}
             renderContent={renderContent}
