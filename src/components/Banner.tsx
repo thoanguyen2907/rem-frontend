@@ -4,7 +4,7 @@ import { TruckIcon, ShieldCheckIcon, CalendarIcon } from '@heroicons/react/24/ou
 export default function Banner() {
   return (
     <div className="bg-[--bg-color] text-[--text-color] py-6 px-4 text-center md:py-12 md:px-8">
-      <h1 className="text-5xl font-bold md:text-6xl">Professional Skip Hire Services</h1>
+      <h1 className="text-3xl font-bold md:text-6xl">Professional Skip Hire Services</h1>
       <p className="mt-2 text-base md:text-lg text-[--text-color]">
         Fast delivery, fair prices, and reliable service for all your waste disposal needs
       </p>
