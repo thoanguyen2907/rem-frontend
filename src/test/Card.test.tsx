@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
 
-import Card from '../components/Card'
+import Card from '../components/commons/Card'
 import { ThemeProvider } from '../context/ThemeContext'
 
 interface TestData {
