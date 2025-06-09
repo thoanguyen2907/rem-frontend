@@ -2,7 +2,10 @@ import React from 'react'
 
 export default function ProductsSkeleton() {
   return (
-    <div className="min-h-screen px-10 py-8" style={{ backgroundColor: '#ffffff' }}>
+    <div
+      className="min-h-screen px-10 py-8"
+      style={{ backgroundColor: '#ffffff' }}
+      data-testid="products-skeleton">
       <div className="text-center mb-10">
         <div className="h-8 w-48 mx-auto bg-gray-200 rounded animate-pulse" />
         <div className="h-4 w-64 mx-auto mt-2 bg-gray-200 rounded animate-pulse" />

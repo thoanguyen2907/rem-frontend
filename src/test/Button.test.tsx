@@ -1,7 +1,7 @@
-import Button from '@/components/Button'
-import { ThemeProvider } from '@/context/ThemeContext'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import Button from '../components/Button'
+import { ThemeProvider } from '../context/ThemeContext'
 
 describe('Button', () => {
   const mockData = { id: 1 }
