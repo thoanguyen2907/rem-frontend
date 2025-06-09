@@ -1,62 +1,32 @@
-import React from 'react'
-import clsx from 'clsx'
+import React, { useEffect } from 'react'
 import { useTheme } from '../context/ThemeContext'
 import { Product } from '../types/types'
 import Card from '../components/Card'
+import { useProductStore } from '../store/useProductStore'
+import ProductsSkeleton from '../components/ProductsSkeleton'
+import Error from '../components/Error'
 
-const products: Product[] = [
-  {
-    id: 17933,
-    size: 4,
-    hire_period_days: 14,
-    transport_cost: null,
-    per_tonne_cost: null,
-    price_before_vat: 278,
-    vat: 20,
-    postcode: 'NR32',
-    area: '',
-    forbidden: true,
-    created_at: '2025-04-03T13:51:46.897146',
-    updated_at: '2025-04-07T13:16:52.813',
-    allowed_on_road: true,
-    allows_heavy_waste: true
-  },
-  {
-    id: 1793332,
-    size: 4,
-    hire_period_days: 14,
-    transport_cost: null,
-    per_tonne_cost: null,
-    price_before_vat: 278,
-    vat: 20,
-    postcode: 'NR32',
-    area: '',
-    forbidden: true,
-    created_at: '2025-04-03T13:51:46.897146',
-    updated_at: '2025-04-07T13:16:52.813',
-    allowed_on_road: true,
-    allows_heavy_waste: true
-  },
-  {
-    id: 179333223232332,
-    size: 4,
-    hire_period_days: 14,
-    transport_cost: null,
-    per_tonne_cost: null,
-    price_before_vat: 278,
-    vat: 20,
-    postcode: 'NR32',
-    area: '',
-    forbidden: true,
-    created_at: '2025-04-03T13:51:46.897146',
-    updated_at: '2025-04-07T13:16:52.813',
-    allowed_on_road: false,
-    allows_heavy_waste: true
-  }
-]
+const postcode = 'NR32'
+const area = 'Lowestoft'
 
 export default function Home() {
   const { theme } = useTheme()
+
+  const { products, fetchProducts, error, loading } = useProductStore()
+
+  useEffect(() => {
+    const controller = new AbortController()
+    const { signal } = controller
+
+    fetchProducts(postcode, area, signal).catch((error) => {
+      if (error.name != 'AbortError') {
+        console.error('fetch error ', error)
+      }
+    })
+    return () => {
+      controller.abort()
+    }
+  }, [fetchProducts])
 
   const renderContent = (data: Product) => {
     return (
@@ -95,6 +65,9 @@ export default function Home() {
   const onButtonClick = (data: Product) => {
     alert(`Selected product: ${data.size} yards`)
   }
+
+  if (error) return <Error />
+  if (loading) return <ProductsSkeleton />
   return (
     <div
       className="min-h-screen px-10 py-8"
@@ -108,7 +81,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <Card
             key={product.id}
