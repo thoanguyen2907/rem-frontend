@@ -4,9 +4,12 @@ import { useTheme } from '../context/ThemeContext'
 import { Product } from '../types/types'
 import { useProductStore } from '../store/useProductStore'
 
-import Card from '../components/Card'
+import Card from '../components/commons/Card'
 import Error from '../components/Error'
 import ProductsSkeleton from '../components/ProductsSkeleton'
+import Banner from '../components/Banner'
+import Shipping from '../components/Shipping'
+import BookingBanner from '../components/BookingBanner'
 
 const postcode = 'NR32'
 const area = 'Lowestoft'
@@ -71,31 +74,40 @@ export default function Home() {
   if (error) return <Error />
   if (loading) return <ProductsSkeleton />
   return (
-    <div
-      className="min-h-screen px-10 py-8"
-      style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-color)' }}>
-      <div className="text-center mb-10">
-        <h1 className="lg:text-3xl sm:text-xl font-bold" style={{ color: 'var(--accent-color)' }}>
-          Choose Your Skip Size
-        </h1>
-        <p className="mt-2" style={{ color: 'var(--secondary-text)' }}>
-          Select the skip size that best suits your needs
-        </p>
-      </div>
+    <>
+      <Banner />
+      <div
+        className="min-h-screen px-10 py-4"
+        style={{ backgroundColor: 'var(--bg-color)', color: 'var(--text-color)' }}>
+        <div className="text-center mb-10">
+          <h1 className="lg:text-3xl sm:text-xl font-bold" style={{ color: 'var(--accent-color)' }}>
+            Choose Your Skip Size
+          </h1>
+          <p className="mt-2" style={{ color: 'var(--secondary-text)' }}>
+            Select the skip size that best suits your needs
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map((product) => (
-          <Card
-            key={product.id}
-            data={product}
-            allowedOnRoad={product.allowed_on_road}
-            buttonText="Select Product"
-            onButtonClick={onButtonClick}
-            renderHeader={renderHeader}
-            renderContent={renderContent}
-          />
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((product) => (
+            <Card
+              key={product.id}
+              data={product}
+              allowedOnRoad={product.allowed_on_road}
+              buttonText="Select Product"
+              onButtonClick={onButtonClick}
+              renderHeader={renderHeader}
+              renderContent={renderContent}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+      <div style={{ backgroundColor: 'var(--bg-color)' }}>
+        <Shipping />
+      </div>
+      <div>
+        <BookingBanner />
+      </div>
+    </>
   )
 }
