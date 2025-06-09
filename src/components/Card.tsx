@@ -1,7 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
 
-import { useTheme } from '../context/ThemeContext'
 import Button from './Button'
 
 /**
